@@ -1,0 +1,51 @@
+.container {
+  :global {
+    .ant-pro-layout-container {
+      /* 头部区域及样式 */
+      .ant-layout-header {
+        color: #fff;
+      }
+      /* 内容区域及滚动条样式 */
+      .ant-layout-content {
+        overflow: scroll;
+        height: 0;
+        padding-block-start: 16px;
+        padding-block-end: 0;
+        padding-inline: 16px;
+      }
+      .ant-layout-content::-webkit-scrollbar {
+        width: 8px;
+        height: 1px;
+        background: hsla(0, 0%, 100%, 0.6);
+      }
+      .ant-layout-content::-webkit-scrollbar-track {
+        border-radius: 0;
+      }
+      .ant-layout-content::-webkit-scrollbar-thumb {
+        background: rgba(95, 95, 95, 0.4);
+        transition: all 10s;
+        border-radius: 6px;
+      }
+      .ant-layout-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(95, 95, 95, 0.7);
+        transition: all 10s;
+      }
+      /* 底部样式 */
+      .ant-pro-global-footer {
+        margin-block-start: 24px;
+      }
+    }
+  }
+  /* 内容部分设置 */
+  .content {
+    width: 100%;
+    background: #fff;
+  }
+  /* 头像部分设置 */
+  .avatar {
+    span {
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,80 +1,107 @@
-/*
- * @Author: Hansen
- * @Date: 2023-06-20 10:03:23
- * @LastEditors: Hansen
- * @LastEditTime: 2023-06-20 10:46:25
- * @FilePath: \template3\src\layouts\index.tsx
- * @Description: description
- */
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Outlet } from "react-router-dom";
-import { Menu } from "antd";
+import { createElement } from "react";
+import { ProLayout, DefaultFooter, getMenuData } from "@ant-design/pro-components";
 
-type MenuItem = Required<MenuProps>["items"][number];
+import _ from "lodash-es";
+import { Avatar, Menu, Dropdown } from "antd";
+import logo from "@/assets/logo.png";
+import { UserOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons";
+import { filterMenus, getPermissionList } from "@/utils/index";
+import { asideMenuConfig } from "./menuConfig";
+import styles from "./index.module.less";
+import { Outlet, Link } from "react-router-dom";
 
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: "group"
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  } as MenuItem;
-}
+const loginOut = async () => {
+  localStorage.clear();
+};
 
-const items: MenuProps["items"] = [
-  getItem("Navigation One", "sub1", <MailOutlined />, [
-    getItem("Item 1", "g1", null, [getItem("Option 1", "1"), getItem("Option 2", "2")], "group"),
-    getItem("Item 2", "g2", null, [getItem("Option 3", "3"), getItem("Option 4", "4")], "group"),
-  ]),
-
-  getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
-    getItem("Option 5", "5"),
-    getItem("Option 6", "6"),
-    getItem("Submenu", "sub3", null, [getItem("Option 7", "7"), getItem("Option 8", "8")]),
-  ]),
-
-  { type: "divider" },
-
-  getItem("Navigation Three", "sub4", <SettingOutlined />, [
-    getItem("Option 9", "9"),
-    getItem("Option 10", "10"),
-    getItem("Option 11", "11"),
-    getItem("Option 12", "12"),
-  ]),
-
-  getItem("Group", "grp", null, [getItem("Option 13", "13"), getItem("Option 14", "14")], "group"),
-];
-
-function Layouts() {
-  const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
-  };
-
+const menuClick = (item: any) => {
+  if (item.key === "logout") {
+    loginOut();
+  }
+};
+const loopMenuItem = (menus: any) =>
+  menus.map(({ icon, children, ...item }: any) => ({
+    ...item,
+    icon: icon && createElement(icon),
+    children: children && loopMenuItem(children),
+  }));
+export default function BasicLayout({}) {
+  if (_.get(location, "pathname") === "/login") {
+    return <div>12345</div>;
+  }
   return (
-    <>
-      <Menu
-        onClick={onClick}
-        style={{ width: 256 }}
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
-        mode="inline"
-        items={items}
-      />
-      12345
-      <div style={{ width: "300px", height: "400px", border: "1px solid red", position: "absolute", left: "100px" }}>
-        78963
+    <ProLayout
+      title="工路模板"
+      className={styles.container}
+      style={{ minHeight: "100vh" }}
+      layout="mix"
+      logo={logo}
+      fixSiderbar
+      fixedHeader
+      location={{
+        pathname: location.pathname,
+      }}
+      token={{
+        header: {
+          colorBgHeader: "#001529",
+          colorHeaderTitle: "#fff",
+          colorTextMenu: "#fff",
+          colorTextRightActionsItem: "#fff",
+        },
+        sider: {
+          colorMenuBackground: "#fff",
+          colorBgMenuItemSelected: "#e6f7ff",
+          colorTextMenuActive: "#1890ff",
+          colorTextMenuItemHover: "#1890ff",
+          colorTextMenuSelected: "#1890ff",
+          colorTextCollapsedButtonHover: "#1890ff",
+        },
+      }}
+      menuDataRender={() => loopMenuItem(filterMenus(asideMenuConfig, getPermissionList([])))}
+      menuItemRender={(item: any, defaultDom: any) => {
+        if (!item.path) {
+          return defaultDom;
+        }
+        return <Link to={item.path}>{item.name}</Link>;
+      }}
+      rightContentRender={() => (
+        <Dropdown
+          arrow
+          menu={{
+            onClick: menuClick,
+            items: [
+              {
+                key: "settings",
+                label: "个人设置",
+              },
+              {
+                key: "logout",
+                label: "退出登录",
+              },
+            ],
+          }}
+          placement="bottom"
+          autoAdjustOverflow
+          autoFocus
+        >
+          <div className={styles.avatar}>
+            <Avatar
+              style={{ cursor: "pointer" }}
+              shape="square"
+              size="small"
+              src="https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg"
+              icon={<UserOutlined />}
+            />
+            <span>工路信息</span>
+          </div>
+        </Dropdown>
+      )}
+      menuFooterRender={false}
+      footerRender={() => <DefaultFooter copyright="工路信息 版权所持有" />}
+    >
+      <div className={styles.content}>
         <Outlet />
       </div>
-    </>
+    </ProLayout>
   );
 }
-
-export default Layouts;

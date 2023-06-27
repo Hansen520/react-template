@@ -2,13 +2,14 @@
  * @Author: Hansen
  * @Date: 2023-06-20 09:54:05
  * @LastEditors: Hansen
- * @LastEditTime: 2023-06-20 10:45:49
+ * @LastEditTime: 2023-06-27 17:20:44
  * @FilePath: \template3\src\routers\index.tsx
  * @Description: 路由表的配置
  */
 import { Navigate, useRoutes } from "react-router-dom";
 import Layout from "@/layouts";
 import Project from '@/pages/project';
+import Home from '@/pages/home';
 
 interface MetaProps {
   keepAlive?: boolean;
@@ -25,6 +26,7 @@ interface RouteObject {
   path?: string;
   meta?: MetaProps;
   isLink?: string;
+  exact?: boolean;
 }
 
 
@@ -35,13 +37,19 @@ const rootRouter: RouteObject[] = [
     element: <Layout />,
     children: [
       {
+        path: "/",
+        element: <Home />,
+        exact: true,
+      },
+      {
         path: "/project",
-        element: <Project />
+        element: <Project />,
+        exact: true,
       }
     ]
   },
   {
-    path: "/abc",
+    path: "/login",
     element: <Project />,
   }
 ];
