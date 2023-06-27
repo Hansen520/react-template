@@ -20,16 +20,8 @@ import {
       icon: TableOutlined,
       children: [
         {
-          name: '列表',
-          path: '/basic/list',
-        },
-        {
           name: '表单',
           path: '/basic/form',
-        },
-        {
-          name: '详情',
-          path: '/basic/detail/1234',
         },
       ],
     },

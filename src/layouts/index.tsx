@@ -8,7 +8,7 @@ import { UserOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons
 import { filterMenus, getPermissionList } from "@/utils/index";
 import { asideMenuConfig } from "./menuConfig";
 import styles from "./index.module.less";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const loginOut = async () => {
   localStorage.clear();
@@ -62,7 +62,14 @@ export default function BasicLayout({}) {
         if (!item.path) {
           return defaultDom;
         }
-        return <Link to={item.path}>{item.name}</Link>;
+        return (
+          <NavLink
+            to={item.path}
+            end
+          >
+            {item.name}
+          </NavLink>
+        );
       }}
       rightContentRender={() => (
         <Dropdown

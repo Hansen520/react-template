@@ -192,7 +192,7 @@ export const pieOption = () => {
 };
 
 /* 甘特图 */
-function cacMinMaxDate(dates) {
+function cacMinMaxDate(dates: any) {
   // 获取最大和最小日期
   const maxDate = Math.max(...dates);
   const minDate = Math.min(...dates);
@@ -408,7 +408,7 @@ export const gattOption = (
         showMaxLabel: true, // 显示最大刻度标签
         fontSize: 12,
         color: '#fff',
-        formatter: function (val, index) {
+        formatter: function (val: any) {
           console.log();
           let label_ = dayjs.unix(val + minTime).format('YYYY-MM-DD');
           return label_;
