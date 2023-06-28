@@ -2,15 +2,16 @@
  * @Author: Hansen
  * @Date: 2023-06-20 09:54:05
  * @LastEditors: Hansen
- * @LastEditTime: 2023-06-27 18:04:18
+ * @LastEditTime: 2023-06-28 09:48:42
  * @FilePath: \template3\src\routers\index.tsx
  * @Description: 路由表的配置
  */
-import { Navigate, useRoutes } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 import Layout from "@/layouts";
 import Project from '@/pages/project';
 import Home from '@/pages/home';
 import Form from '@/pages/form'
+import Login from '@/pages/login';
 
 interface MetaProps {
   keepAlive?: boolean;
@@ -42,11 +43,11 @@ const rootRouter: RouteObject[] = [
         element: <Home />,
       },
       {
-        path: "/project",
+        path: "project",
         element: <Project />,
       },
       {
-        path: "/basic",
+        path: "basic",
         children: [
           {
             path: 'form',
@@ -58,8 +59,12 @@ const rootRouter: RouteObject[] = [
   },
   {
     path: "/login",
-    element: <Project />,
+    element: <Login />,
   },
+  {
+    path: "*",
+    element: <Navigate to="/404" />
+  }
 ];
 
 const Router = () => {
