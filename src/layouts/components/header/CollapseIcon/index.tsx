@@ -1,11 +1,14 @@
-import React from 'react';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import styles from './index.module.less';
 
-function CollapseIcon() {
+const CollapseIcon = (props: any) => {
+  const { isCollapse, updateCollapse } = props;
   return (
-    <div>
-      CollapseIcon
+    <div className={styles.collapsed}>
+      <MenuUnfoldOutlined />
     </div>
   );
 }
 
 export default CollapseIcon;
+ 

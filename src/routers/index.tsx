@@ -2,7 +2,7 @@
  * @Author: Hansen
  * @Date: 2023-06-20 09:54:05
  * @LastEditors: Hansen
- * @LastEditTime: 2023-06-28 09:48:42
+ * @LastEditTime: 2023-06-29 10:31:48
  * @FilePath: \template3\src\routers\index.tsx
  * @Description: 路由表的配置
  */
@@ -11,6 +11,8 @@ import Layout from "@/layouts";
 import Project from '@/pages/project';
 import Home from '@/pages/home';
 import Form from '@/pages/form'
+import List from '@/pages/list';
+import Detail from '@/pages/detail';
 import Login from '@/pages/login';
 
 interface MetaProps {
@@ -52,6 +54,14 @@ const rootRouter: RouteObject[] = [
           {
             path: 'form',
             element: <Form />
+          },
+          {
+            path: 'list',
+            element: <List />
+          },
+          {
+            path: 'detail/:id',
+            element: <Detail />
           }
         ]
       }
