@@ -1,28 +1,27 @@
 import { useState, useEffect } from "react";
 import Logo from "@/assets/logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Spin, Menu } from "antd";
-import { asideMenuConfig } from '@/layouts/menuConfig';
+import { Spin, Menu, Button } from "antd";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { asideMenuConfig } from "@/layouts/menuConfig";
 import styles from "./index.module.less";
 
-const LayoutMenu = (props: any) => {
+const LayoutMenu = ({ updateCollapse }: any) => {
   const { pathname } = useLocation();
-  const { isCollapse, setBreadcrumbList, setAuthRouter, setMenuList: setMenuListAction } = props;
   const [selectedKeys, setSelectedKeys] = useState<string[]>([pathname]);
-  const [openKeys, setOpenKeys] = useState<string[]>([]);
+  const [isCollapse, setIsCollapse] = useState(true);
 
   /* 点击当前菜单跳转页面 */
   const navigate = useNavigate();
   const clickMenu = ({ key }: { key: string }) => {
     console.log(key, 14);
     navigate(key);
-  }
+  };
 
   // 刷新页面菜单保持高亮
-	useEffect(() => {
-    console.log(pathname, 22);
-		setSelectedKeys([pathname]);
-	}, [pathname, isCollapse]);
+  useEffect(() => {
+    setSelectedKeys([pathname]);
+  }, [pathname, isCollapse]);
 
   return (
     <div className={styles.container}>
@@ -31,7 +30,7 @@ const LayoutMenu = (props: any) => {
           <div className={styles.img}>
             <img src={Logo} />
           </div>
-          <div className={styles.title}>工路模板</div>
+          {isCollapse ? <div className={styles.title}>工路模板</div> : ""}
         </div>
         <Menu
           mode="inline"
@@ -42,7 +41,20 @@ const LayoutMenu = (props: any) => {
           defaultOpenKeys={["sub1"]}
           inlineCollapsed
           onOpenChange={() => {}}
-        ></Menu>
+        />
+        <div
+          className={styles.collapsed}
+          onClick={() => {
+            setIsCollapse(!isCollapse);
+            updateCollapse(isCollapse);
+          }}
+        >
+          {isCollapse ? (
+            <Button shape="circle" icon={<RightOutlined style={{ color: "#666" }} />} size={"small"} />
+          ) : (
+            <Button shape="circle" icon={<LeftOutlined style={{ color: "#666" }} />} size={"small"} />
+          )}
+        </div>
       </Spin>
     </div>
   );

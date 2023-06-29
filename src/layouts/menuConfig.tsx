@@ -1,20 +1,28 @@
+/*
+ * @Author: Hansen
+ * @Date: 2023-06-27 16:58:35
+ * @LastEditors: Hansen
+ * @LastEditTime: 2023-06-29 17:14:24
+ * @FilePath: \template3\src\layouts\menuConfig.tsx
+ * @Description: description
+ */
 import { HomeOutlined, TableOutlined } from "@ant-design/icons";
 
 const asideMenuConfig: any = [
   {
     label: "首页",
     key: "/",
-    // icon: HomeOutlined,
+    icon: <HomeOutlined />,
   },
   {
     label: "项目页面",
     key: "/project",
-    // icon: TableOutlined,
+    icon: <TableOutlined />,
   },
   {
     label: "基本页",
     key: "/basic",
-    // icon: TableOutlined,
+    icon: <TableOutlined />,
     children: [
       {
         label: "表单",

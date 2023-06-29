@@ -22,16 +22,15 @@ const LayoutTabs = (props: any) => {
 
   const addTabs = () => {
     const route = searchRoute(pathname, asideMenuConfig);
-    console.log(route, 21);
     let newTabsList = JSON.parse(JSON.stringify(tabsList)); // 深克隆
     if (tabsList.every((item: any) => item.key !== route.key)) {
       newTabsList.push({ label: route.label, key: route.key });
     }
     setTabsList(newTabsList);
+    setActiveValue(pathname);
   };
 
   const onEdit = (targetKey: React.MouseEvent | React.KeyboardEvent | string, action: "add" | "remove") => {
-    console.log(targetKey, action);
     if (action === 'remove') {
       if (targetKey === '/') return;
       /* 删除的是当前的标签 */
@@ -44,12 +43,12 @@ const LayoutTabs = (props: any) => {
         });
       }
       setTabsList(tabsList.filter((item: any) => item.key !== targetKey));
+      setActiveValue(pathname);
     }
   };
 
   return (
     <div className={styles.tabs}>
-      {JSON.stringify(tabsList)}
       <Tabs
         animated
         destroyInactiveTabPane
@@ -58,6 +57,7 @@ const LayoutTabs = (props: any) => {
         onEdit={onEdit}
         onChange={clickTabs}
         items={tabsList}
+        activeKey={activeValue}
       />
     </div>
   );
