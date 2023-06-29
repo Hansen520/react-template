@@ -34,3 +34,21 @@ export const filterMenus = (list: any, authList: any) => {
     return true;
   });
 };
+
+/**
+ * @description 递归查询对应的路由项目
+ * @param {String} key 当前访问地址
+ * @param {Array} routes 路由列表
+ * @returns array
+ */
+export const searchRoute = (key: string, routes: any = []) => {
+	let result = {};
+	for (let item of routes) {
+		if (item.key === key) return item;
+		if (item.children) {
+			const res = searchRoute(key, item.children);
+			if (Object.keys(res).length) result = res;
+		}
+	}
+	return result;
+};

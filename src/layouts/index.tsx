@@ -37,12 +37,12 @@ export default function BasicLayout({}) {
         <LayoutMenu />
       </Sider>
       <Layout>
-        <LayoutHeader></LayoutHeader>
-        <LayoutTabs></LayoutTabs>
+        <LayoutHeader />
+        <LayoutTabs />
         <Content>
-          <Outlet></Outlet>
+          <Outlet />
         </Content>
-        <LayoutFooter></LayoutFooter>
+        <LayoutFooter />
       </Layout>
     </section>
   );

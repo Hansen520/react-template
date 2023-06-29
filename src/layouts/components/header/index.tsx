@@ -12,7 +12,7 @@ const Header = () => {
 				<CollapseIcon />
 			</div>
 			<div className={styles.headerRi}>
-				<span className="username">Hooks</span>
+				<span className={styles.username}>工路</span>
 				<AvatarIcon />
 			</div>
     </Header>

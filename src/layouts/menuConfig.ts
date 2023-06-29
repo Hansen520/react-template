@@ -1,31 +1,35 @@
-import {
-    HomeOutlined,
-    TableOutlined,
-  } from '@ant-design/icons';
-  
-  const asideMenuConfig = [
-    {
-      name: '首页',
-      path: '/',
-      icon: HomeOutlined,
-    },
-    {
-        name: '项目页面',
-        path: '/project',
-        icon: TableOutlined,
+import { HomeOutlined, TableOutlined } from "@ant-design/icons";
+
+const asideMenuConfig: any = [
+  {
+    label: "首页",
+    key: "/",
+    // icon: HomeOutlined,
+  },
+  {
+    label: "项目页面",
+    key: "/project",
+    // icon: TableOutlined,
+  },
+  {
+    label: "基本页",
+    key: "/basic",
+    // icon: TableOutlined,
+    children: [
+      {
+        label: "表单",
+        key: "/basic/list",
       },
-    {
-      name: '基本页',
-      path: '/basic',
-      icon: TableOutlined,
-      children: [
-        {
-          name: '表单',
-          path: '/basic/form',
-        },
-      ],
-    },
-  ];
-  
-  export { asideMenuConfig };
-  
+      {
+        label: "列表",
+        key: "/basic/form",
+      },
+      {
+        label: "详情",
+        key: "/basic/detail/12",
+      },
+    ],
+  },
+];
+
+export { asideMenuConfig };

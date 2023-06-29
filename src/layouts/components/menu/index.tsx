@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Logo from "@/assets/logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Spin, Menu } from "antd";
+import { asideMenuConfig } from '@/layouts/menuConfig';
 import styles from "./index.module.less";
 
 const LayoutMenu = (props: any) => {
@@ -36,30 +37,7 @@ const LayoutMenu = (props: any) => {
           mode="inline"
           triggerSubMenuAction="click"
           selectedKeys={selectedKeys}
-          items={[
-            {
-              key: "/",
-              label: "首页",
-            },
-            {
-              key: "/basic",
-              label: "通用菜单",
-              children: [
-                {
-                  key: "/basic/form",
-                  label: "表单"
-                },
-                {
-                  key: "/basic/list",
-                  label: "列表"
-                },
-                {
-                  key: "/basic/detail/12",
-                  label: "详情"
-                }
-              ]
-            },
-          ]}
+          items={asideMenuConfig}
           onClick={clickMenu}
           defaultOpenKeys={["sub1"]}
           inlineCollapsed

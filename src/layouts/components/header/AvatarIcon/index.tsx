@@ -1,9 +1,10 @@
-import React from 'react';
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 function AvatarIcon() {
   return (
     <div>
-      AvatarIcon
+      <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
     </div>
   );
 }
