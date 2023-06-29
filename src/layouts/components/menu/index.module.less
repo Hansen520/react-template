@@ -30,7 +30,16 @@
     cursor: pointer;
     position: absolute;
     top: 140px;
-    right: -12px;
+    right: -8px;
     color: #eee;
+    :global {
+      .ant-btn-circle{
+        border: none;
+        box-shadow: 0 0 1px #ccc;
+      }
+      .ant-btn-icon:hover {
+        color: #1890ff;
+      }
+    }
   }
 }
