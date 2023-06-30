@@ -10,7 +10,7 @@ const Header = () => {
     <Header className={styles.header}>
       <div className={styles.headerLf} />
 			<div className={styles.headerRi}>
-				<span className={styles.username}>工路</span>
+				<span className={styles.username}>工路信息</span>
 				<AvatarIcon />
 			</div>
     </Header>
