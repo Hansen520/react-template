@@ -20,6 +20,11 @@ const asideMenuConfig: any = [
     icon: <TableOutlined />,
   },
   {
+    label: "hooks应用",
+    key: "/hook",
+    icon: <TableOutlined />,
+  },
+  {
     label: "基本页",
     key: "/basic",
     icon: <TableOutlined />,

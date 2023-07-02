@@ -30,7 +30,7 @@ export default function BasicLayout({}) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   return (
     <section className={styles.container}>
-        <Sider trigger={null} collapsed={isCollapsed} width={215}>
+        <Sider trigger={null} collapsed={isCollapsed} width={220}>
           <LayoutMenu updateCollapse={(flag: boolean) => {setIsCollapsed(flag)}}/>
         </Sider>
         <Layout>

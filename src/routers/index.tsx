@@ -14,6 +14,7 @@ import Form from '@/pages/form'
 import List from '@/pages/list';
 import Detail from '@/pages/detail';
 import Login from '@/pages/login';
+import MyHook from '@/pages/myHook';
 
 interface MetaProps {
   keepAlive?: boolean;
@@ -47,6 +48,10 @@ const rootRouter: RouteObject[] = [
       {
         path: "project",
         element: <Project />,
+      },
+      {
+        path: "hook",
+        element: <MyHook />,
       },
       {
         path: "basic",
