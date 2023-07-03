@@ -2,7 +2,7 @@
  * @Author: Hansen
  * @Date: 2023-06-20 09:54:05
  * @LastEditors: Hansen
- * @LastEditTime: 2023-06-29 15:34:20
+ * @LastEditTime: 2023-06-30 14:45:38
  * @FilePath: \template3\src\routers\index.tsx
  * @Description: 路由表的配置
  */
@@ -14,6 +14,7 @@ import Form from '@/pages/form'
 import List from '@/pages/list';
 import Detail from '@/pages/detail';
 import Login from '@/pages/login';
+import Cesium from '@/pages/cesium'
 
 interface MetaProps {
   keepAlive?: boolean;
@@ -47,6 +48,10 @@ const rootRouter: RouteObject[] = [
       {
         path: "project",
         element: <Project />,
+      },
+      {
+        path: "cesium",
+        element: <Cesium />,
       },
       {
         path: "basic",

@@ -1,12 +1,4 @@
-/*
- * @Author: Hansen
- * @Date: 2023-06-27 16:58:35
- * @LastEditors: Hansen
- * @LastEditTime: 2023-06-29 17:14:24
- * @FilePath: \template3\src\layouts\menuConfig.tsx
- * @Description: description
- */
-import { HomeOutlined, TableOutlined } from "@ant-design/icons";
+import { HomeOutlined, TableOutlined, BgColorsOutlined } from "@ant-design/icons";
 
 const asideMenuConfig: any = [
   {
@@ -37,6 +29,11 @@ const asideMenuConfig: any = [
         key: "/basic/detail/12",
       },
     ],
+  },
+  {
+    label: "cesium地图分享",
+    key: "/cesium",
+    icon: <BgColorsOutlined />,
   },
 ];
 
