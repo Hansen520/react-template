@@ -2,7 +2,7 @@
  * @Author: Hansen
  * @Date: 2023-06-20 09:54:05
  * @LastEditors: Hansen
- * @LastEditTime: 2023-07-03 09:26:44
+ * @LastEditTime: 2023-07-06 14:03:00
  * @FilePath: \template3\src\routers\index.tsx
  * @Description: 路由表的配置
  */
@@ -16,6 +16,7 @@ import Detail from '@/pages/detail';
 import Login from '@/pages/login';
 import Cesium from '@/pages/cesium'
 import MyHook from '@/pages/myHook';
+import Slick from '@/pages/Slick';
 
 interface MetaProps {
   keepAlive?: boolean;
@@ -53,6 +54,10 @@ const rootRouter: RouteObject[] = [
       {
         path: "hook",
         element: <MyHook />,
+      },
+      {
+        path: "slick",
+        element: <Slick />,
       },
       {
         path: "cesium",

@@ -36,6 +36,11 @@ const asideMenuConfig: any = [
     ],
   },
   {
+    label: "slick轮播图分享",
+    key: "/slick",
+    icon: <BgColorsOutlined />,
+  },
+  {
     label: "cesium地图分享",
     key: "/cesium",
     icon: <BgColorsOutlined />,
