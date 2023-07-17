@@ -2,21 +2,21 @@
  * @Author: Hansen
  * @Date: 2023-06-20 09:54:05
  * @LastEditors: Hansen
- * @LastEditTime: 2023-07-06 14:03:00
+ * @LastEditTime: 2023-07-17 14:01:02
  * @FilePath: \template3\src\routers\index.tsx
  * @Description: 路由表的配置
  */
-import { useRoutes, Navigate } from "react-router-dom";
+import { useRoutes, Navigate, redirect, Routes, Route } from "react-router-dom";
 import Layout from "@/layouts";
-import Project from '@/pages/project';
-import Home from '@/pages/home';
-import Form from '@/pages/form'
-import List from '@/pages/list';
-import Detail from '@/pages/detail';
-import Login from '@/pages/login';
-import Cesium from '@/pages/cesium'
-import MyHook from '@/pages/myHook';
-import Slick from '@/pages/Slick';
+import Project from "@/pages/project";
+import Home from "@/pages/home";
+import Form from "@/pages/form";
+import List from "@/pages/list";
+import Detail from "@/pages/detail";
+import Login from "@/pages/login";
+import Cesium from "@/pages/cesium";
+import MyHook from "@/pages/myHook";
+import Slick from "@/pages/Slick";
 
 interface MetaProps {
   keepAlive?: boolean;
@@ -34,9 +34,8 @@ interface RouteObject {
   meta?: MetaProps;
   isLink?: string;
   exact?: boolean;
+  negative?: any;
 }
-
-
 
 const rootRouter: RouteObject[] = [
   {
@@ -44,7 +43,7 @@ const rootRouter: RouteObject[] = [
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "/home",
         element: <Home />,
       },
       {
@@ -67,20 +66,20 @@ const rootRouter: RouteObject[] = [
         path: "basic",
         children: [
           {
-            path: 'form',
-            element: <Form />
+            path: "form",
+            element: <Form />,
           },
           {
-            path: 'list',
-            element: <List />
+            path: "list",
+            element: <List />,
           },
           {
-            path: 'detail/:id',
-            element: <Detail />
-          }
-        ]
-      }
-    ]
+            path: "detail/:id",
+            element: <Detail />,
+          },
+        ],
+      },
+    ],
   },
   {
     path: "/login",
@@ -88,8 +87,8 @@ const rootRouter: RouteObject[] = [
   },
   {
     path: "*",
-    element: <Navigate to="/404" />
-  }
+    element: <Navigate to="/404" />,
+  },
 ];
 
 const Router = () => {

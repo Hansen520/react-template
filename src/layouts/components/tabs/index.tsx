@@ -1,3 +1,11 @@
+/*
+ * @Author: Hansen
+ * @Date: 2023-06-28 10:32:18
+ * @LastEditors: Hansen
+ * @LastEditTime: 2023-07-17 16:00:35
+ * @FilePath: \template3\src\layouts\components\tabs\index.tsx
+ * @Description: description
+ */
 import { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import styles from "./index.module.less";

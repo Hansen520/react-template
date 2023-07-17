@@ -2,47 +2,49 @@ import { HomeOutlined, TableOutlined, BgColorsOutlined } from "@ant-design/icons
 
 const asideMenuConfig: any = [
   {
-    label: "首页",
-    key: "/",
-    icon: <HomeOutlined />,
+    name: '首页',
+    path: '/',
+    icon: '1',
+    component: '/Home',
+    hasChildren: false
   },
   {
-    label: "项目页面",
-    key: "/project",
+    name: "项目页面",
+    path: "/project",
     icon: <TableOutlined />,
   },
   {
-    label: "hooks应用",
-    key: "/hook",
+    name: "hooks应用",
+    path: "/hook",
     icon: <TableOutlined />,
   },
   {
-    label: "基本页",
-    key: "/basic",
+    name: "基本页",
+    path: "/basic",
     icon: <TableOutlined />,
     children: [
       {
-        label: "表单",
-        key: "/basic/list",
+        name: "表单",
+        path: "/basic/list",
       },
       {
-        label: "列表",
-        key: "/basic/form",
+        name: "列表",
+        path: "/basic/form",
       },
       {
-        label: "详情",
-        key: "/basic/detail/12",
+        name: "详情",
+        path: "/basic/detail/12",
       },
     ],
   },
   {
-    label: "slick轮播图分享",
-    key: "/slick",
+    name: "slick轮播图分享",
+    path: "/slick",
     icon: <BgColorsOutlined />,
   },
   {
-    label: "cesium地图分享",
-    key: "/cesium",
+    name: "cesium地图分享",
+    path: "/cesium",
     icon: <BgColorsOutlined />,
   },
 ];
