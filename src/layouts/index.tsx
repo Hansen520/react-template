@@ -118,7 +118,7 @@ export default function BasicLayout({}) {
         menuItemRender={(item, defaultDom: any) => {
           console.log(item, 98);
           if (!item.path || item.isHidden) {
-            return defaultDom;
+            return `&&${defaultDom}`;
           }
           return <Link to={item.path}>{defaultDom}</Link>;
         }}
