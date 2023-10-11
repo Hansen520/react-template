@@ -1,20 +1,61 @@
 .container {
-  display: flex;
-  min-width: 950px;
-  height: 100%;
   :global {
-    .ant-layout-sider {
-      box-sizing: border-box;
-    }
-    .ant-layout {
-      /* 防止 tabs 超出不收缩 */
-      overflow-x: hidden;
+    .ant-pro-layout-container {
+      background-color: #f0f2f5;
+      /* 内容区域及滚动条样式 */
       .ant-layout-content {
-        box-sizing: border-box;
-        flex: 1;
-        padding: 10px 12px;
-        overflow-x: hidden;
+        height: 0;
+        padding-block-start: 0;
+        padding-block-end: 0;
+        padding-inline: 0;
+      }
+
+      /* 底部样式 */
+      .ant-pro-global-footer {
+        margin-block-start: 10px;
+        margin-block-end: 10px;
+        
+      }
+      .ant-pro-global-footer-copyright{
+        color: #999;
+      }
+    }
+    /* 侧边栏区域 */
+    .ant-layout-sider {
+      .ant-pro-sider-logo{
+        padding-block: 13px;
+      }
+      .ant-pro-sider-collapsed-button {
+        inset-block-start: 56px;
       }
     }
   }
+}
+
+
+/* 内容部分设置 */
+.content {
+  width: 100%;
+  overflow: scroll;
+  background-color: #f0f2f5;
+  padding: 16px;
+  box-sizing: border-box;
+}
+/* 中间滚动条区域 */
+.content::-webkit-scrollbar {
+  width: 8px;
+  height: 1px;
+  background: hsla(0, 0%, 100%, 0.6);
+}
+.content::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+.content::-webkit-scrollbar-thumb {
+  background: rgba(95, 95, 95, 0.4);
+  transition: all 10s;
+  border-radius: 6px;
+}
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(95, 95, 95, 0.7);
+  transition: all 10s;
 }

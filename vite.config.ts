@@ -10,7 +10,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
         server: {
             host: '0.0.0.0',
             open: true,
-            port: 7778,
+            port: 8800,
             cors: true,
           },
         resolve: {
