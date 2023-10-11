@@ -8,6 +8,7 @@ import { useState } from "react";
 import { required, min, max, hasEmpty } from "@/utils/verify";
 import { setStorage } from "@/utils";
 import useAuth from "@/utils/useAuth";
+import { HOME_URL } from '@/contain';
 import store from "@/store";
 
 const Index = () => {
@@ -36,7 +37,7 @@ const Index = () => {
         setAuth({ authButtonA: true, authButtonB: true });
         setStorage("token", data.access_token);
         setStorage("buttonAuth", JSON.stringify({ authButtonA: true, authButtonB: true }));
-        navigate("/");
+        navigate(HOME_URL);
       }
     } catch (error) {
       Modal.destroyAll();

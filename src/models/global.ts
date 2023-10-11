@@ -1,3 +1,7 @@
+/*
+ * @Date: 2023-10-11 13:53:06
+ * @Description: description
+ */
 import { createModel } from '@ice/store';
 import server from '@/services/global';
 
@@ -32,7 +36,9 @@ export default createModel({
     //   }
     // },
     async userLogin(params) {
-      const data = await server.apiLogin(params);
+      // const data = await server.apiLogin(params);
+      // const data = await server.apiLogin(params);
+      const data = {userName: '111'}
       if (data) {
         await this.update({
           info: data,

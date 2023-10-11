@@ -1,3 +1,7 @@
+/*
+ * @Date: 2023-10-11 13:53:06
+ * @Description: description
+ */
 import { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import styles from "./index.module.less";
@@ -7,11 +11,12 @@ import { searchRoute } from "@/utils";
 import { cloneDeep } from 'lodash-es';
 import { filterMenus, getPermissionList } from '@/utils/authConfig';
 import { useLocation, useNavigate } from "react-router-dom";
+import { HOME_URL } from '@/contain';
 import store from '@/store';
 
 const LayoutTabs = (props: any) => {
   const { pathname } = useLocation();
-  const [tabsList, setTabsList] = useState<any>([{ label: "首页", key: "/", closable: false }]);
+  const [tabsList, setTabsList] = useState<any>([{ label: "首页", key: HOME_URL, closable: false }]);
   const navigate = useNavigate();
   const [activeValue, setActiveValue] = useState<string>(pathname);
   const [globalState] = store.useModel('global');
