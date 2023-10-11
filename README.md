@@ -1,5 +1,5 @@
 
-## 工路管理系统
+## react模板
 
 ## 使用
 
@@ -8,7 +8,7 @@
 $ yarn
 
 # 启动服务
-$ yarn start  # visit http://localhost:81
+$ yarn start  # visit http://localhost:8800
 
 # 构建开发环境
 $ yarn build:dev
@@ -104,15 +104,6 @@ project=front-web-template
 
 ```
 
-上传命令
-
-```
-    "build:daily": "icejs build --mode daily && sentry-cli releases files 0.0.1 upload-sourcemaps --url-prefix '~/' './dist' && rm -f ./dist/js/*.js.map",
-
-
-```
-    "@sentry/react": "^7.17.4",
-    "@sentry/tracing": "^7.17.4",
 
 
 tips
