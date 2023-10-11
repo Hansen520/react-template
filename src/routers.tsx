@@ -3,12 +3,11 @@
  * @Description: description
  */
 import { lazy, Suspense } from "react";
-import { useRoutes } from "react-router";
 import { Skeleton } from "antd";
 import Layout from "@/layouts/BasicLayout";
 import { AuthRouter } from "@/utils/authRouter";
 import { HOME_URL } from "@/contain";
-import { Navigate } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 import { asideMenuConfig } from "@/layouts/BasicLayout/menuConfig";
 
 const Login = lazy(() => import(/* chunkName: Login */ "@/pages/Login"));
@@ -52,10 +51,10 @@ const routers = [
       </Suspense>
     ),
   },
-  // {
-  //   path: "/",
-  //   element: <Navigate to={HOME_URL} />,
-  // },
+  {
+    path: "/",
+    element: <Navigate to={HOME_URL} />,
+  },
   {
     path: "/",
     element: <Layout />,

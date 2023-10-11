@@ -8,7 +8,7 @@ const asideMenuConfig: RouterMenus[] = [
   {
     id: '1',
     name: "首页",
-    path: "/",
+    path: "/home",
     icon: "HomeOutlined",
     component: "/Home",
     isHidden: false, /* 隐藏此菜单 */

@@ -3,7 +3,7 @@ import { Modal, Input, Form } from "antd";
 import { useNavigate } from "react-router-dom";
 import logoGl from "@/assets/logo-gl.png";
 import styles from "./index.module.less";
-import { LoginForm, ProFormText } from "@ant-design/pro-form";
+import { LoginForm, ProFormText } from "@ant-design/pro-components";
 import { useState } from "react";
 import { required, min, max, hasEmpty } from "@/utils/verify";
 import { setStorage } from "@/utils";
