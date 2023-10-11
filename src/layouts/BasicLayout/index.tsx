@@ -37,7 +37,7 @@ export default function BasicLayout() {
 
   return (
     <ProLayout
-      title="工路模板"
+      title="模板"
       className={styles.container}
       style={{ minHeight: "100vh" }}
       layout="mix"
@@ -86,7 +86,7 @@ export default function BasicLayout() {
       avatarProps={{
         src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
         size: "small",
-        title: "工路信息",
+        title: "张三",
         render: (props: any, dom: any) => {
           return (
             <Dropdown
