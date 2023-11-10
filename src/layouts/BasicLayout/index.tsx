@@ -41,7 +41,7 @@ export default function BasicLayout() {
       className={styles.container}
       style={{ minHeight: "100vh" }}
       layout="mix"
-      logo={logo}
+      logo={<>LOGO</>}
       fixSiderbar
       fixedHeader
       location={{
@@ -112,7 +112,7 @@ export default function BasicLayout() {
         },
       }}
       menuFooterRender={false}
-      footerRender={() => <DefaultFooter copyright="工路信息 版权所持有" />}
+      footerRender={() => <DefaultFooter copyright="版权所持有" />}
     >
       <LayoutTabs />
       <div className={styles.content}>

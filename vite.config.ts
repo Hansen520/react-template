@@ -16,7 +16,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
   const { VITE_PORT, VITE_HTTP_API } = env;
   return {
-    base: "./",
+    base: "/",
     root: process.cwd(),
     /* 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息 */
     clearScreen: false,
