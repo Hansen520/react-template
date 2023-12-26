@@ -15,7 +15,7 @@ const customMenuIcon: { [key: string]: any } = menuIcon;
 export const loopMenuItem: any = (menus: any) =>
   menus.map(({ icon, children, ...item }: any) => ({
     ...item,
-    icon: icon && createElement(customIcons[icon] ||customMenuIcon[icon] || customMenuIcon['DocSvg']),
+    icon: icon && createElement(customIcons[icon] || customMenuIcon[icon] || customMenuIcon['DocSvg']),
     children: children && loopMenuItem(children),
   }));
 

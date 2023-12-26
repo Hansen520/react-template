@@ -30,7 +30,7 @@
     "react-router-dom": "^6.14.2"
   },
   "devDependencies": {
-    "@ice/store": "^2.0.4",
+    "@ice/store": "2.0.4",
     "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.8",
     "@types/qs": "^6.9.7",
