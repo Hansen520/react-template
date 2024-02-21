@@ -54,6 +54,16 @@ const asideMenuConfig: RouterMenus[] = [
   },
   {
     id: '3',
+    name: "myHook",
+    path: "/myHook",
+    icon: 'DatabaseOutlined',
+    component: "/myHook",
+    isParent: false,
+    auth: ['admin'],
+    isHidden: false,
+  },
+  {
+    id: '4',
     name: "模板测试与菜单配置",
     path: "/test",
     icon: 'ShareAltOutlined',
@@ -63,7 +73,7 @@ const asideMenuConfig: RouterMenus[] = [
     isHidden: false,
   },
   {
-    id: '4',
+    id: '5',
     name: "用户角色权限",
     path: "/auth",
     icon: 'ShareAltOutlined',

@@ -96,4 +96,4 @@ class HttpRequest {
     return this.service.delete(url, { params, ..._object });
   }
 }
-export default new HttpRequest(config);
+export default new HttpRequest(config as any);
