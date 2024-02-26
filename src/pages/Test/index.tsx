@@ -2,7 +2,7 @@
  * @Date: 2023-08-14 13:53:03
  * @Description: description
  */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, Suspense, lazy } from 'react';
 import { Tree, Button, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import type { DataNode, TreeProps } from 'antd/es/tree';
@@ -10,7 +10,38 @@ import { asideMenuConfig } from '@/layouts/BasicLayout/menuConfig';
 import Auth from '@/components/Auth';
 import { fileDownloadByRes } from '@/utils';
 import styles from './index.module.less';
+import { atom, useAtom } from 'jotai';
+import { ErrorBoundary } from 'react-error-boundary';
 import store from '@/store';
+import { divide } from 'lodash-es';
+
+const LazyComponentSS = lazy(() => import('./LazyComponent'))
+
+const userAtom = atom(async (get) => {
+  const userId = 1;
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}?_delay=1000`);
+
+  return response.json();
+});
+
+const ErrorBound = () => {
+  useEffect(() => {
+    throw new Error('error');
+  }, [])
+  return <div>EBHansen</div>
+}
+
+const UserName = () => {
+  const [user] = useAtom(userAtom);
+  return <div>User name: { user.name }</div>
+}
+
+const fallbackRender = ({ error }: { error: any}) => {
+  return <div>
+      <p>出错了1：</p>
+      <div>{error.message}</div>
+  </div>
+}
 
 const Test = () => {
   const [testState, testDispatchers] = store.useModel('test');
@@ -78,6 +109,30 @@ const Test = () => {
         treeData={asideMenuConfig as any}
       />
       <div className={styles.colorAndBg}>123456</div>
+      <div>------------------------------------------</div>
+      <Suspense fallback={'loading'}>
+        <LazyComponentSS />
+      </Suspense>
+
+      {/* Suspense 是promise包一层的结果 */}
+      <Suspense fallback={'loading'}>
+        <UserName />
+      </Suspense>
+
+      <Suspense fallback={'loading'}>
+        <ErrorBoundary fallbackRender={fallbackRender}>
+          <UserName />
+        </ErrorBoundary>
+      </Suspense>
+
+      <ErrorBoundary fallbackRender={({ error}) => {
+        return <div>
+          <p>出错了：</p>
+          <div>{error.message}</div>
+        </div>
+      }}>
+        <ErrorBound />
+      </ErrorBoundary>
     </div>
   );
 };
