@@ -2,20 +2,21 @@
  * @Date: 2023-08-14 13:53:03
  * @Description: description
  */
-import { useEffect, useRef, Suspense, lazy } from 'react';
-import { Tree, Button, Space } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import type { DataNode, TreeProps } from 'antd/es/tree';
-import { asideMenuConfig } from '@/layouts/BasicLayout/menuConfig';
-import Auth from '@/components/Auth';
-import { fileDownloadByRes } from '@/utils';
-import styles from './index.module.less';
-import { atom, useAtom } from 'jotai';
-import { ErrorBoundary } from 'react-error-boundary';
-import store from '@/store';
-import { divide } from 'lodash-es';
+import { useEffect, useRef, Suspense, lazy } from "react";
+import { Tree, Button, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import type { DataNode, TreeProps } from "antd/es/tree";
+import { asideMenuConfig } from "@/layouts/BasicLayout/menuConfig";
+import Auth from "@/components/Auth";
+import { fileDownloadByRes } from "@/utils";
+import styles from "./index.module.less";
+import { atom, useAtom } from "jotai";
+import { ErrorBoundary } from "react-error-boundary";
+import store from "@/store";
+// import history from "@/utils/history";
+import { divide } from "lodash-es";
 
-const LazyComponentSS = lazy(() => import('./LazyComponent'))
+const LazyComponentSS = lazy(() => import("./LazyComponent"));
 
 const userAtom = atom(async (get) => {
   const userId = 1;
@@ -26,34 +27,36 @@ const userAtom = atom(async (get) => {
 
 const ErrorBound = () => {
   useEffect(() => {
-    throw new Error('error');
-  }, [])
-  return <div>EBHansen</div>
-}
+    throw new Error("error");
+  }, []);
+  return <div>EBHansen</div>;
+};
 
 const UserName = () => {
   const [user] = useAtom(userAtom);
-  return <div>User name: { user.name }</div>
-}
+  return <div>User name: {user.name}</div>;
+};
 
-const fallbackRender = ({ error }: { error: any}) => {
-  return <div>
+const fallbackRender = ({ error }: { error: any }) => {
+  return (
+    <div>
       <p>出错了1：</p>
       <div>{error.message}</div>
-  </div>
-}
+    </div>
+  );
+};
 
 const Test = () => {
-  const [testState, testDispatchers] = store.useModel('test');
+  const [testState, testDispatchers] = store.useModel("test");
 
   const dom = useRef(null);
-  const onSelect: TreeProps['onSelect'] = (selectedKeys, info) => {
+  const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
     console.log(selectedKeys, info, 9);
   };
 
   useEffect(() => {
     console.log(123);
-  }, [dom.current])
+  }, [dom.current]);
 
   return (
     <div className={`${styles.container} border border-dashed`} ref={dom}>
@@ -61,7 +64,12 @@ const Test = () => {
         <div className="w-[4px] h-[18px] bg-blue-300 m-[8px]"></div>tailwind测试
       </div>
       <div className="p-[12px]">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white py-[2px] px-[10px] py-[4px] rounded-[4px]">
+        <button
+          onClick={() => {
+            // history.push("/myHook");
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white py-[2px] px-[10px] py-[4px] rounded-[4px]"
+        >
           tailwind按钮
         </button>
       </div>
@@ -86,11 +94,16 @@ const Test = () => {
       <div className="text-[16px] flex items-center">
         <div className="w-[4px] h-[18px] bg-blue-300 m-[8px]"></div>审批流文件下载
         <div className="p-[12px]">
-          <Button type="primary" onClick={async () => {
-            const res = await testDispatchers.DownFlow();
-            fileDownloadByRes('文件流下载', res);
-          }}>文件下载</Button>
-      </div>
+          <Button
+            type="primary"
+            onClick={async () => {
+              const res = await testDispatchers.DownFlow();
+              fileDownloadByRes("文件流下载", res);
+            }}
+          >
+            文件下载
+          </Button>
+        </div>
       </div>
       <div className="text-[16px] flex items-center">
         <div className="w-[4px] h-[18px] bg-blue-300 m-[8px]"></div>
@@ -100,37 +113,41 @@ const Test = () => {
         className="border border-dashed p2"
         icon={<DownOutlined />}
         fieldNames={{
-          title: 'name',
-          key: 'id',
+          title: "name",
+          key: "id",
         }}
         switcherIcon={<DownOutlined />}
-        defaultExpandedKeys={['2']}
+        defaultExpandedKeys={["2"]}
         onSelect={onSelect}
         treeData={asideMenuConfig as any}
       />
       <div className={styles.colorAndBg}>123456</div>
       <div>------------------------------------------</div>
-      <Suspense fallback={'loading'}>
+      <Suspense fallback={"loading"}>
         <LazyComponentSS />
       </Suspense>
 
       {/* Suspense 是promise包一层的结果 */}
-      <Suspense fallback={'loading'}>
+      <Suspense fallback={"loading"}>
         <UserName />
       </Suspense>
 
-      <Suspense fallback={'loading'}>
+      <Suspense fallback={"loading"}>
         <ErrorBoundary fallbackRender={fallbackRender}>
           <UserName />
         </ErrorBoundary>
       </Suspense>
 
-      <ErrorBoundary fallbackRender={({ error}) => {
-        return <div>
-          <p>出错了：</p>
-          <div>{error.message}</div>
-        </div>
-      }}>
+      <ErrorBoundary
+        fallbackRender={({ error }) => {
+          return (
+            <div>
+              <p>出错了：</p>
+              <div>{error.message}</div>
+            </div>
+          );
+        }}
+      >
         <ErrorBound />
       </ErrorBoundary>
     </div>

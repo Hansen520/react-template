@@ -166,7 +166,7 @@ export const verifyPhone = () => {
 /* 字符长度校验 */
 export const verifyEmpty = (minsize: number, maxsize: number) => {
   return {
-    validator: (rule, value) => {
+    validator: (rule: string, value: string) => {
       if (minsize > 0 && value && value.length !== trim(value).length && trim(value).length < minsize) {
         return Promise.reject(`输入的内容少于${minsize}位`);
       }
@@ -182,7 +182,7 @@ export const verifyEmpty = (minsize: number, maxsize: number) => {
 /* 非空校验 */
 export const hasEmpty = (str = '请不要输入空字符') => {
   return {
-    validator: (rule, value) => {
+    validator: (rule: string, value: string) => {
       if (/\s+/g.test(value)) {
         // eslint-disable-next-line prefer-promise-reject-errors
         return Promise.reject(str);
