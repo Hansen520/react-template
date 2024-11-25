@@ -1,9 +1,9 @@
+import { useRef, MouseEventHandler } from 'react';
 import { PlusOutlined} from '@ant-design/icons';
 import { Button, Switch } from 'antd';
 import { get } from 'lodash-es';
 import { ProTable, ActionType } from '@ant-design/pro-components';
 import { useNavigate} from 'react-router-dom'
-import { useRef } from 'react';
 import styles from './index.module.less';
 import store from '@/store';
 
@@ -15,15 +15,15 @@ const Index =  () => {
   const navigate = useNavigate()
 
 
-  const add = (value) => {
+  const add: MouseEventHandler<HTMLSpanElement> = (value) => {
     // history.push('/basic/form');
   };
 
-  const edit = (values) => {
+  const edit: MouseEventHandler<HTMLSpanElement> = (values) => {
     // history.push('/basic/123654');
   };
 
-  const toDetail = (record) => {
+  const toDetail: MouseEventHandler<HTMLSpanElement> = (record) => {
     navigate(`/basic/detail`);
   }
 
@@ -37,7 +37,7 @@ const Index =  () => {
   //   }
   // };
 
-  const columns = [
+  const columns: any = [
 
     {
       title: '商品名称',
@@ -114,7 +114,7 @@ const Index =  () => {
       dateFormatter="string"
       toolBarRender={() => [
         <Button key="button" icon={<PlusOutlined />} onClick={add} type="primary">
-          新增
+          <span>新增</span>
         </Button>,
       ]}
     />
