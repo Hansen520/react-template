@@ -13,8 +13,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   /* 本地根路径 */
   const root = process.cwd();
   /* 通过loadEnv拿到相关的环境变量 */
-  const env = loadEnv(mode, root);
-  const { VITE_PORT, VITE_HTTP_API } = env;
+  // const env = loadEnv(mode, root);
+  // const { VITE_PORT, VITE_HTTP_API } = env;
   return {
     base: "/",
     root: process.cwd(),

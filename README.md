@@ -105,6 +105,11 @@ project=front-web-template
 ```
 
 
+```
+采用click-to-react-component定位源码
+```
+
+
 
 tips
 ```

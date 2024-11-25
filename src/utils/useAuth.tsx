@@ -1,11 +1,14 @@
-import { FC, useState, useContext, createContext } from "react";
+/*
+ * @Date: 2024-10-11 13:53:06
+ * @Description: 设置相关的权限代码
+ */
+import { FC, useState, useContext, createContext, PropsWithChildren } from "react";
 
 type AuthType = Record<string, boolean>;
 type ContextType = [AuthType, React.Dispatch<React.SetStateAction<AuthType>>];
 
-interface ProviderProps {
+interface ProviderProps extends PropsWithChildren{
   value: AuthType;
-  children: any;
 }
 
 interface InjectProps {

@@ -10,7 +10,7 @@ import { asideMenuConfig } from "@/layouts/BasicLayout/menuConfig";
 import Auth from "@/components/Auth";
 import { fileDownloadByRes } from "@/utils";
 import styles from "./index.module.less";
-import { atom, useAtom } from "jotai";
+// import { atom, useAtom } from "jotai";
 import { ErrorBoundary } from "react-error-boundary";
 import store from "@/store";
 // import history from "@/utils/history";
@@ -18,12 +18,12 @@ import { divide } from "lodash-es";
 
 const LazyComponentSS = lazy(() => import("./LazyComponent"));
 
-const userAtom = atom(async (get) => {
-  const userId = 1;
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}?_delay=1000`);
+// const userAtom = atom(async (get) => {
+//   const userId = 1;
+//   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}?_delay=1000`);
 
-  return response.json();
-});
+//   return response.json();
+// });
 
 const ErrorBound = () => {
   useEffect(() => {
@@ -32,10 +32,10 @@ const ErrorBound = () => {
   return <div>EBHansen</div>;
 };
 
-const UserName = () => {
-  const [user] = useAtom(userAtom);
-  return <div>User name: {user.name}</div>;
-};
+// const UserName = () => {
+//   const [user] = useAtom(userAtom);
+//   return <div>User name: {user.name}</div>;
+// };
 
 const fallbackRender = ({ error }: { error: any }) => {
   return (
@@ -128,7 +128,7 @@ const Test = () => {
       </Suspense>
 
       {/* Suspense 是promise包一层的结果 */}
-      <Suspense fallback={"loading"}>
+      {/* <Suspense fallback={"loading"}>
         <UserName />
       </Suspense>
 
@@ -136,7 +136,7 @@ const Test = () => {
         <ErrorBoundary fallbackRender={fallbackRender}>
           <UserName />
         </ErrorBoundary>
-      </Suspense>
+      </Suspense> */}
 
       <ErrorBoundary
         fallbackRender={({ error }) => {

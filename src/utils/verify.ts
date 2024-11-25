@@ -1,3 +1,7 @@
+/*
+ * @Date: 2023-10-11 13:53:06
+ * @Description: 这个主要是针对antd的Form表单的验证
+ */
 
 import { trim } from 'lodash-es';
 

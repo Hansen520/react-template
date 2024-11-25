@@ -1,14 +1,15 @@
 /*
  * @Date: 2023-10-11 13:53:06
- * @Description: description
+ * @Description: App.tsx
  */
-import { BrowserRouter } from "react-router-dom";
+import { unstable_HistoryRouter as Router } from "react-router-dom";
+import history from '@/utils/history';
 import RouterConfig from "./routers";
 
 
 const App = () => (
-  <BrowserRouter>
+  <Router history={history as any}>
     <RouterConfig />
-  </BrowserRouter>
+  </Router>
 );
 export default App;

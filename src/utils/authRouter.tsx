@@ -1,3 +1,8 @@
+/*
+ * @Date: 2023-10-11 13:53:06
+ * @Description: 路由权限
+ */
+import { ReactNode } from 'react';
 import { Navigate, useLocation } from "react-router-dom";
 import { getStorage } from "./index";
 import { RouterMenus } from "@/types/index";
@@ -24,7 +29,7 @@ export function handleRouter(routerList: RouterMenus[], newArr: string[] = []) {
 /**
  * @description 生成的路由动态路由权限，只跳转当前有的菜单, 避免Scss平台跳转
  * */
-export const AuthRouter = (props: { children: any }) => {
+export const AuthRouter = (props: { children: ReactNode }) => {
   const { pathname } = useLocation();
   const [global] = store.useModel('global');
   // * 判断是否有Token

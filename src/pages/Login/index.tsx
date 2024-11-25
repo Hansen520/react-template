@@ -62,7 +62,7 @@ const Index = () => {
     <div className={styles.container}>
       <div className={styles.bgImage}>
         <div className={styles.companyInfo}>
-          <h1>工路信息</h1>
+          <h1>首页信息</h1>
           <div className={styles.proName}>
             <span>工程项目管理系统</span>
           </div>
@@ -70,7 +70,7 @@ const Index = () => {
             安全<span>/</span>放心<span>/</span>便捷
           </div>
         </div>
-        <div className={styles.companyName}>工路（杭州）信息技术有限公司</div>
+        <div className={styles.companyName}>我的模板</div>
       </div>
       <div className={styles.content}>
         <LoginForm
