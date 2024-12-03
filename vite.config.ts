@@ -4,8 +4,10 @@ import { ConfigEnv, UserConfig, loadEnv } from "vite";
 import { viteExternalsPlugin } from "vite-plugin-externals";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { viteMockServe } from "vite-plugin-mock";
+import compression from 'vite-plugin-compression';
 import { themeVariables } from "./config/theme";
 import windiCSS from 'vite-plugin-windicss';
+
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   /* 判断是否为开发或者生产模式 */
@@ -49,6 +51,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         localEnabled: true /* 设置是否启用本地mock文件 */,
         prodEnabled: true /* 设置打包是否启用mock功能 */,
       }),
+      // 使用gzip压缩
+      compression({
+        ext: '.gz', // 生成的压缩文件后缀
+        algorithm: 'gzip', // 压缩算法，默认是 gzip
+        deleteOriginFile: false, // 是否删除源文件，默认是 false
+      }),
       isBuild &&
         createHtmlPlugin({
           template: "./index.html",
@@ -82,7 +90,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     css: {
       /* 样式的重命名 */
       modules: {
-        generateScopedName: "[path][name]__[local]___[hash:base64:5]",
+        generateScopedName: "[name]__[local]___[hash:base64:5]",
         hashPrefix: "prefix",
       },
       /* 主题颜色的配置 */

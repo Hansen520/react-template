@@ -47,13 +47,13 @@ const Index = () => {
 
   const goUserProtocol = (e: any) => {
     e.preventDefault();
-    window.open("https://static-files.gonglu.info/guangSha/agreement.html", "_blank");
+    // window.open("https://static-files.gonglu.info/guangSha/agreement.html", "_blank");
     return false;
   };
   const goPrivacyPolicy = (e: any) => {
     e.preventDefault();
     return false;
-    window.open("https://static-files.gonglu.info/guangSha/privacy.html", "_blank");
+    // window.open("https://static-files.gonglu.info/guangSha/privacy.html", "_blank");
   };
   const isAgreeServer = (e: any) => {
     setIsAgreeProtocol(e.target.checked);

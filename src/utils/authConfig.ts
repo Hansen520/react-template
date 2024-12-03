@@ -9,13 +9,13 @@ import * as Icon from "@ant-design/icons";
 import * as menuIcon from "@/assets/menuIcon/Icon";
 
 const customIcons: { [key: string]: any } = Icon;
-const customMenuIcon: { [key: string]: any } = menuIcon;
+/* const customMenuIcon: { [key: string]: any } = menuIcon; * /
 
 /* 递归重置我们所需要的菜单 */
 export const loopMenuItem: any = (menus: any) =>
   menus.map(({ icon, children, ...item }: any) => ({
     ...item,
-    icon: icon && createElement(customIcons[icon] || customMenuIcon[icon] || customMenuIcon['DocSvg']),
+    icon: icon && createElement(customIcons[icon] /*|| customMenuIcon[icon] || customMenuIcon['DocSvg']*/),
     children: children && loopMenuItem(children),
   }));
 
